@@ -1,0 +1,7 @@
+{
+  "name": "LibroMatriculas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
