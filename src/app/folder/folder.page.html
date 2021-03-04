@@ -3,19 +3,43 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Tus coches</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list *ngIf="data">
+    <ion-card *ngFor="let car of data.cars">
+      <ion-card-header>
+        <ion-card-subtitle>{{car.matricula}} - {{car.num_bastidor}}</ion-card-subtitle>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-align-self-start">
+              <ion-card-title>{{car.modelo}} {{car.Motor}} </ion-card-title>
+            </ion-col>
+            <ion-col class="ion-align-self-center">
+              <ion-card-title>{{car.kilometros}} km</ion-card-title>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-align-self-center">
+              Última actualización el {{car.updated_at | date:'dd/MM/yyyy HH:mm'}} 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="arrowdiv">
+          <ion-icon (click)="presentModalCar(car.id)" name="arrow-forward-outline" color="secondary" class="arrow"></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentModal()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

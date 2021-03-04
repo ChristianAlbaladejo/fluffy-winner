@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons (click)="dismiss()"><ion-icon name="chevron-back-outline"></ion-icon></ion-buttons>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list lines="full" class="ion-no-margin" *ngIf="service">
+    <ion-list-header lines="full">
+      <ion-label>
+        {{service.service}}
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>{{service.description}}</ion-label>
+    </ion-item>
+
+  <ion-item>
+    <ion-label>Filtro de acéite</ion-label>
+    <ion-toggle [(ngModel)]="service.oilAndFilter" [style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Filtro de aire</ion-label>
+    <ion-toggle [(ngModel)]="service.airFilter"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Filtro de cabina</ion-label>
+    <ion-toggle [(ngModel)]="service.cabinFilter"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Filtro de combustible
+</ion-label>
+    <ion-toggle [(ngModel)]="service.fuelFilter"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Líquido de los frenos</ion-label>
+    <ion-toggle [(ngModel)]="service.brakeFluid"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Líquido refrigerante
+</ion-label>
+    <ion-toggle [(ngModel)]="service.coolingLiquid"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Bujía</ion-label>
+    <ion-toggle [(ngModel)]="service.sparkPlug"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Correa</ion-label>
+    <ion-toggle [(ngModel)]="service.timingBelts"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Guarniciones
+</ion-label>
+    <ion-toggle [(ngModel)]="service.backGarnishes"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Sistema de aire acondicionado</ion-label>
+    <ion-toggle [(ngModel)]="service.airConditioningSystem"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Filtro de particulas</ion-label>
+    <ion-toggle [(ngModel)]="service.particulateFilters"[style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+</ion-list>
+</ion-content>

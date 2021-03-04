@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="data">{{data.modelo}} {{data.Motor}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-icon class="icon" name="trash-outline" color="danger" (click)="presentAlertRadio()"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin" *ngIf="data">
+    <ion-list-header lines="full">
+      <ion-label>
+        Actualiza tus Kilómetros
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Kilómetros</ion-label>
+      <ion-input type="number" [(ngModel)]="km"  min="1"></ion-input>
+      <ion-button color="clear" (click)="refreshKm()" ><ion-icon color="primary" name="refresh-outline"></ion-icon></ion-button>
+    </ion-item>
+    <ion-item *ngIf="data.service">
+      <ion-label>Proximo servício {{data.service[data.service.length - 1].alertDate}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list lines="full" class="ion-no-margin" *ngIf="data && data.service">
+    <ion-list-header lines="full">
+      <ion-label>
+        Servicios
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let service of data.operations; let i = index" (click)="presentModal( data.service[i])">
+      <ion-label>
+        <h2>{{service.date | date:'shortDate'}}</h2>
+        <h3>{{service.km}} km</h3>
+      </ion-label>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
