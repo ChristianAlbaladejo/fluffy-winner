@@ -126,10 +126,13 @@ export class CarPage implements OnInit {
   }
 
   async presentModal(id) {
+    const found = this.data.operations.find(element => element.id == id.operation);
+    console.log(found)
     const modal = await this.modalCtrl.create({
       component: ServicePage,
       componentProps: {
         'service': id,
+        'mechanic': found
       }
     });
     return await modal.present();

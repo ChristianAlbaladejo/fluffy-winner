@@ -52,16 +52,24 @@ export class LoginPage implements OnInit {
         await loading.dismiss();
         let token = await Storage.get({ key: TOKEN_KEY });
         let tokenvalue = JSON.parse(token.value)
-        console.log(tokenvalue.user);
+        console.log(tokenvalue.user.role.name);
+        if (tokenvalue.user.role.name == 'User'){
           this.router.navigateByUrl('/folder/Inbox', { replaceUrl: true });
-        
+        }else{
+          const alert = await this.alertController.create({
+            header: 'Error',
+            message: 'Usuario o contraseña incorrectos',
+            buttons: ['OK'],
+          });
+          await alert.present();
+        }
       },
       async (res) => {
         console.log(res)
         await loading.dismiss();
         const alert = await this.alertController.create({
           header: 'Error',
-          message: 'Parece que tenemos problemas',
+          message: 'Usuario o contraseña incorrectos',
           buttons: ['OK'],
         });
 

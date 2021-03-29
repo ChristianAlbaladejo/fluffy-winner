@@ -74,4 +74,28 @@ export class ApiService {
 
         return this._http.get('https://libromatriculas.herokuapp.com/cars/'+ car, { headers: headers });
     }
+
+    async getUser(user): Promise<Observable<any>> {
+        let token = await Storage.get({ key: TOKEN_KEY });
+        let tokenvalue = JSON.parse(token.value)
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + tokenvalue.jwt,
+            'Accept': '*/*'
+        });
+
+        return this._http.get('https://libromatriculas.herokuapp.com/users/' + user, { headers: headers });
+    }
+
+    async getListCar(): Promise<Observable<any>> {
+        let token = await Storage.get({ key: TOKEN_KEY });
+        let tokenvalue = JSON.parse(token.value)
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + tokenvalue.jwt,
+            'Accept': '*/*'
+        });
+
+        return this._http.get('https://libromatriculas.herokuapp.com/car-lists/' , { headers: headers });
+    }
 }

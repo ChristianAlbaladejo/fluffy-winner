@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-img *ngIf="logo" [src]="'https://libromatriculas.herokuapp.com' + logo.url"></ion-img>
 <ion-list lines="full" class="ion-no-margin" *ngIf="service">
     <ion-list-header lines="full">
       <ion-label>
@@ -20,8 +21,13 @@
     </ion-item>
 
   <ion-item>
-    <ion-label>Filtro de acéite</ion-label>
+    <ion-label>Filtro de acéite y acéite</ion-label>
     <ion-toggle [(ngModel)]="service.oilAndFilter" [style.pointerEvents]="'none'"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Marca del acéite</ion-label>
+    <ion-input [(ngModel)]="service.oilName" class="no-validation-line" [readonly]="true"></ion-input>
   </ion-item>
 
   <ion-item>

@@ -1,3 +1,10 @@
 ion-icon {
     zoom: 1.5;
 }
+
+.item-has-focus{--highlight-background: transparent;}
+
+
+ion-input {
+    text-align: right;
+}
